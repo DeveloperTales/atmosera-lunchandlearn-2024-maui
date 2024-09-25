@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="LunchAndLearn2024MauiApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:LunchAndLearn2024MauiApp.Views"
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    Title="LunchAndLearn2024MauiApp"
+    FlyoutBackground="{StaticResource Primary}">
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout BackgroundColor="{StaticResource Tertiary}"
+                         Padding="20, 10">
+                <Image Aspect="AspectFit"
+                       VerticalOptions="Start"
+                       HorizontalOptions="CenterAndExpand"
+                       Source="atmosera_white.png" />
+                <Label Text="Lunch and Learn 2024 Atmosera"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Books">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf02d;" Color="{StaticResource White}" />
+            </Tab.Icon>
+            <ShellContent
+                Route="booksactive"
+               Title="Active"
+               ContentTemplate="{DataTemplate views:ActiveBooksPage}" />
+            <ShellContent
+                Route="booksnext"
+               Title="Next"
+               ContentTemplate="{DataTemplate views:UpcomingBooksPage}" />
+            <ShellContent
+                Route="bookscomplete"
+               Title="Completed"
+               ContentTemplate="{DataTemplate views:CompletedBooksPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Route="quotes"
+            Title="Quotes"
+            ContentTemplate="{DataTemplate views:QuotesPage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf5ad;" Color="{StaticResource White}" />
+            </ShellContent.Icon>
+        </ShellContent>
+    </FlyoutItem>
+    <ShellContent
+        Route="about"
+        Title="About"
+        ContentTemplate="{DataTemplate views:AboutPage}">
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="FAS" Glyph="&#xf05a;" Color="{StaticResource White}" />
+        </ShellContent.Icon>
+    </ShellContent>
+</Shell>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LunchAndLearn2024MauiApp.Views.ListViews.BookListView"
+             xmlns:models="clr-namespace:LunchAndLearn2024Models;assembly=LunchAndLearn2024Models"
+             xmlns:viewmodels="clr-namespace:LunchAndLearn2024MauiApp.ViewModels;assembly=LunchAndLearn2024MauiApp"
+             x:DataType="viewmodels:BooksViewModel">
+    <RefreshView
+       IsRefreshing="{Binding IsBusy}"
+       RefreshColor="{StaticResource Primary}"
+       Command="{Binding LoadBooksCommand}" >
+        <CollectionView                
+           ItemsSource="{Binding Books}"
+           ItemSizingStrategy="MeasureAllItems"
+           SelectionMode="Single"
+           SelectedItem="{Binding SelectedItem}"
+           SelectionChangedCommand="{Binding SelectBookCommand}"
+           SelectionChangedCommandParameter="{Binding Path=SelectedItem, Source={RelativeSource Self}}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Book">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout
+                           Padding="10"
+                           Spacing="10">
+                            <Image 
+                               IsVisible="{Binding ImageUrl, Converter={StaticResource stringBooleanConverter}}"
+                               Source="{Binding ImageUrl}"
+                               HeightRequest="80"/>
+                            <VerticalStackLayout
+                               VerticalOptions="CenterAndExpand"
+                               Spacing="4">
+                                <Label
+                                   Style="{StaticResource TitleLabel}"
+                                   Text="{Binding Title}"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="WordWrap" />
+                                <Label
+                                   IsVisible="{Binding Description, Converter={StaticResource stringBooleanConverter}}"
+                                   Text="{Binding Description}"
+                                   Style="{StaticResource SecondaryLabel}"
+                                   FontAttributes="Italic"
+                                   MaxLines="1"
+                                   LineBreakMode="TailTruncation"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                        <BoxView Style="{StaticResource DividerBoxViewMargin}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentView>

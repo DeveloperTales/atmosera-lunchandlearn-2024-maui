@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:LunchAndLearn2024MauiApp.Converters">
+    <Style x:Key="TitlePrimaryLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="FontSize" Value="Large" />
+    </Style>
+    <Style x:Key="TitleLargeLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="FontSize" Value="Large" />
+    </Style>
+    <Style x:Key="TitleLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+    </Style>
+    <Style x:Key="QuoteLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="FontAttributes" Value="Italic" />
+    </Style>
+    <Style x:Key="SecondayLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray100}}" />
+    </Style>
+    <Style x:Key="FormLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray100}}" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+    </Style>
+    <Style TargetType="Label" Class="FlyoutItemLabelStyle">
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{StaticResource White}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    <Style x:Key="DividerBoxView" TargetType="BoxView">
+        <Setter Property="Color" Value="{StaticResource ColorDivider}" />
+        <Setter Property="HeightRequest" Value="1" />
+    </Style>
+    <Style x:Key="DividerBoxViewMargin" TargetType="BoxView" BasedOn="{StaticResource DividerBoxView}">
+        <Setter Property="Margin" Value="10,0,0,0" />
+    </Style>
+    <Style x:Key="ListImageButton" TargetType="ImageButton">
+        <Setter Property="WidthRequest" Value="25" />
+        <Setter Property="HeightRequest" Value="25" />
+        <Setter Property="Scale" Value="{OnPlatform 1.0, iOS=0.7}" />
+    </Style>
+
+    <converters:StringBooleanConverter x:Key="stringBooleanConverter" />
+    <converters:BookImageConverter x:Key="bookImageConverter" />
+    <converters:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+</ResourceDictionary>

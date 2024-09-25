@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LunchAndLearn2024MauiApp.Views.BookAddUpdatePage"
+             xmlns:models="clr-namespace:LunchAndLearn2024Models;assembly=LunchAndLearn2024Models"
+             xmlns:viewmodels="clr-namespace:LunchAndLearn2024MauiApp.ViewModels;assembly=LunchAndLearn2024MauiApp"
+             x:DataType="viewmodels:BookViewModel"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding AddUpdateBookCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf0c7;" Color="{StaticResource White}" Size="20"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <VerticalStackLayout Padding="10">
+        <ActivityIndicator
+            HorizontalOptions="Center"
+            Margin="10"
+            IsVisible="{Binding IsBusy}"
+            IsEnabled="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            Color="{StaticResource Primary}"/>
+        <Grid 
+            Padding="10"
+            RowSpacing="10"
+            IsVisible="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="CenterAndExpand"
+                WidthRequest="120"
+                Aspect="AspectFit"
+                Source="{Binding ImageUrl, Converter={StaticResource bookImageConverter}, Mode=OneWay}">
+            </Image>
+            <HorizontalStackLayout 
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                Spacing="10">
+                <ImageButton
+                    Style="{StaticResource ListImageButton}"
+                    Command="{Binding TakePhotoCommand}" >
+                    <ImageButton.Source>
+                        <FontImageSource FontFamily="FAS" Glyph="&#xf030;" Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+                    </ImageButton.Source>
+                </ImageButton>
+                <ImageButton
+                    Style="{StaticResource ListImageButton}"
+                    Command="{Binding GetImageCommand}" >
+                    <ImageButton.Source>
+                        <FontImageSource FontFamily="FAS" Glyph="&#xf03e;" Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+                    </ImageButton.Source>
+                </ImageButton>
+            </HorizontalStackLayout>
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Title:"
+                Style="{StaticResource FormLabel}" />
+            <Entry
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding BookItem.Title}"
+                HorizontalOptions="FillAndExpand" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Description:"
+                Style="{StaticResource FormLabel}" />
+            <Entry 
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding BookItem.Description}"
+                HorizontalOptions="FillAndExpand" />
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="Author:"
+                Style="{StaticResource FormLabel}" />
+            <Entry 
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding BookItem.Author}"
+                HorizontalOptions="FillAndExpand" />
+            <Label
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="Status:"
+                Style="{StaticResource FormLabel}" />
+            <Picker 
+                Grid.Row="5"
+                Grid.Column="1"
+                ItemsSource="{Binding Statuses}"
+                SelectedItem="{Binding Status}"
+                HorizontalOptions="FillAndExpand" />
+            <Label 
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="Notes:"
+                Style="{StaticResource FormLabel}" />
+            <Entry 
+                Grid.Row="6"
+                Grid.Column="1"
+                Text="{Binding BookItem.Notes}"
+                HorizontalOptions="FillAndExpand" />
+        </Grid>
+    </VerticalStackLayout>
+
+</ContentPage>

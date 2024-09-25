@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:LunchAndLearn2024MauiApp.ViewModels"
+             x:Class="LunchAndLearn2024MauiApp.Views.AboutPage"
+              x:DataType="viewModels:AboutViewModel"
+             Title="AboutPage">
+    <VerticalStackLayout 
+        Padding="20"
+        Spacing="10">
+        <Label 
+            Text="Welcome to Atmosera Lunch and Learn 2024 Maui!"
+            Style="{StaticResource TitlePrimaryLabel}" />
+        <Label 
+            Text="We delve into creating a straightforward app using MAUI that helps you track books you are currently reading, have completed, or plan to read. This app was developed by Juandré ‘Joe’ Swart."
+            Style="{StaticResource SecondayLabel}" />
+        <Label
+            Margin="0, 20, 0, 0"
+            Text="Below, we use platform-specific code to determine the device’s orientation."
+            Style="{StaticResource SecondayLabel}" />
+        <Label
+            Text="{Binding DeviceOrientation}"
+            Style="{StaticResource TitleLabel}" />
+    </VerticalStackLayout>
+</ContentPage>
