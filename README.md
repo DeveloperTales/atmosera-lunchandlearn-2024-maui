@@ -33,10 +33,10 @@ Calling a webapi that stores the data for the application. The api uses cosmosdb
 
 ### Books
 
-Tabs for books allows Creating/updating book items.
+Tabs for books that allow creating/updating book items.
 Simple collection view displays the books.
 Data stored in cosmosdb in azure.
 
 ### Quotes
 
-Simple item list of random quotes, pull list to receive new quotes.
+List of random quotes, pull list to receive new quotes.
