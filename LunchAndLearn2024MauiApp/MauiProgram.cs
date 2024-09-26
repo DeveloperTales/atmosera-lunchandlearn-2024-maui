@@ -37,13 +37,11 @@ public static class MauiProgram
         services.AddSingleton<ActiveBooksPage>();
         services.AddTransient<BookAddUpdatePage>();
         services.AddSingleton<CompletedBooksPage>();
-        services.AddTransient<QuotesPage>();
         services.AddSingleton<UpcomingBooksPage>();
 
         // View Models
         services.AddTransient<AboutViewModel>();
         services.AddTransient<BooksViewModel>();
-        services.AddTransient<QuotesViewModel>();
         services.AddTransient<BookViewModel>();
 
         // Services
