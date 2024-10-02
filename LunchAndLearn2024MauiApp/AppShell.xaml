@@ -42,16 +42,6 @@
                ContentTemplate="{DataTemplate views:CompletedBooksPage}" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent
-            Route="quotes"
-            Title="Quotes"
-            ContentTemplate="{DataTemplate views:QuotesPage}">
-            <ShellContent.Icon>
-                <FontImageSource FontFamily="FAS" Glyph="&#xf5ad;" Color="{StaticResource White}" />
-            </ShellContent.Icon>
-        </ShellContent>
-    </FlyoutItem>
     <ShellContent
         Route="about"
         Title="About"
